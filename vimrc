@@ -21,8 +21,8 @@ set title "title
 set wmnu "wildmenu
 
 " Compilation
-nnoremap <silent> <F9> :w<cr>:!g++ % -o %< -g -Wall -Wextra -std=c++98 -fsanitize=undefined -fsanitize-undefined-trap-on-error<cr>
-nnoremap <silent> <F8> :w<cr>:!g++ % -o %< -std=c++14<cr>
+nnoremap <silent> <F9> :w<cr>:!g++ % -o %< -g -Wall -std=c++98 -ftrapv -fsanitize=undefined -fsanitize-undefined-trap-on-error<cr>
+nnoremap <silent> <F8> :w<cr>:!g++ % -o %< -std=c++11<cr>
 inoremap <silent> <F9> <esc><F9>
 inoremap <silent> <F8> <esc><F8>
 
@@ -42,4 +42,4 @@ else
 endif
 
 " Line Number
-nnoremap <silent> e :set rnu!<cr>
+" nnoremap <silent> e :set rnu!<cr>
