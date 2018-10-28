@@ -29,3 +29,6 @@ nnoremap <c-j> <c-e>
 nnoremap <c-k> <c-y>
 nnoremap <c-h> <c-u>
 nnoremap <c-l> <c-d>
+
+" Actions
+nnoremap <cr> :w<cr>
