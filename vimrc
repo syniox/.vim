@@ -1,6 +1,6 @@
 " Appearance
 syntax on
-color slate-s
+color slate
 
 " Options
 set shortmess=atI
@@ -12,6 +12,8 @@ set shiftwidth=4
 set showcmd
 set wildmenu
 set wildignore=*.swp
+set fileencodings=utf-8,cp936,ucs-bom,default
+set fileencoding=utf-8
 filetype indent on
 
 " Compilation
@@ -22,6 +24,10 @@ inoremap <silent> <F8> <esc><F8>
 
 " Actions
 nnoremap <cr> :w<cr>
+if has("windows") && !empty(glob("~/.vim"))
+	map "+y :w !clip.exe<CR><CR>
+en
+
 
 " Completion
 inoremap <silent> {<CR> {<CR>}<esc>ko
