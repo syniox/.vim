@@ -11,6 +11,6 @@ nnoremap <F8> :w<CR> :!g++ % -o %< -lm -Wall -Wextra -std=c++11 -O2<CR>
 nnoremap <CR> :w<CR>
 inoremap {<CR> {<CR>}<esc>ko
 
-if has('windows')&&!empty(glob("~/.vim"))
-	nnoremap "+y :w !clip.exe<CR><CR>
+if has('windows') && !empty(glob("~/.vim"))
+	map "+y :w !clip.exe<CR><CR>
 en
