@@ -1,7 +1,7 @@
 function Debug()
     w
     if &filetype ==# "cpp"
-        execute "!g++ % -o %< -lm -Wall -WExtra -std=c++14 -g -fsanitize=undefined"
+        execute "!g++ % -o %< -lm -Wall -Wextra -std=c++14 -g -fsanitize=undefined"
     en
     if &filetype ==# "rust"
         execute "!rustc % -o %<"
