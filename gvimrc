@@ -3,4 +3,5 @@ if has('windows')
 else
 	set guifont=Consolas\ 14
 endif
+set columns=100
 set guioptions=!cimg
