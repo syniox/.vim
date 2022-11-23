@@ -1,3 +1,5 @@
+""" General config
+
 " 终端下允许 ALT，详见：https://github.com/skywind3000/vim-init/wiki/Setup-terminals-to-support-ALT-and-Backspace-correctly
 function! Terminal_MetaMode(mode)
     set ttimeout
