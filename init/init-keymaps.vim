@@ -1,9 +1,9 @@
 """ Tabs
 " Alt+N切换Tab
 for i in range(1,7) " Normal mode
-    exec "nnoremap <m-".i."> :tabn ".i."<cr>"
-    " has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1'):
-    exec "tnoremap <m-".i."> <c-w>:tabn ".i."<cr>"
+    exec "nnoremap <silent><m-".i."> :tabn ".i."<cr>"
+    " if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1'):
+    exec "tnoremap <silent><m-".i."> <c-w>:tabn ".i."<cr>"
 endfor
 
 " Tab操作
@@ -52,3 +52,35 @@ tnoremap <silent><m-l> <c-w>:wincmd l<cr>
 
 """ mapleader
 " let mapleader = ';'
+
+
+""" Compile and run
+let g:asyncrun_open = 6
+let g:asyncrun_bell = 1
+nnoremap <F7> :call asyncrun#quickfix_toggle(6)<cr>
+" nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
+
+
+
+function Debug()
+    w
+    if &filetype ==# "cpp"
+        exec "!g++ % -o %< -lm -Wall -Wextra -std=c++14 -g -fsanitize=undefined"
+    en
+    if &filetype ==# "rust"
+        exec "!rustc % -o %<"
+    en
+endfunction
+function Dbuild()
+    w
+    if &filetype ==# "rust"
+        exec "!cargo build"
+    en
+    if &filetype ==# "cpp"
+        exec "AsyncRun -cwd=<root> make"
+    en
+endfunction
+
+nnoremap <F10> :call Dbuild()<CR>
+nnoremap <F9> :call Debug()<CR>
+" nnoremap <F8> :w<CR> :!g++ % -o %< -lm -Wall -Wextra -std=c++14 -O2<CR>
