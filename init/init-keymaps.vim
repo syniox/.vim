@@ -12,6 +12,9 @@ nnoremap <silent> <leader>tq :tabclose<cr>
 nnoremap <silent> <m-n> :tabnew<cr>
 nnoremap <silent> <m-q> :tabclose<cr>
 nnoremap <silent> <m-m> :tab term<cr>
+tnoremap <silent> <m-n> <c-w>:tabnew<cr>
+tnoremap <silent> <m-q> <c-w>:tabclose!<cr>
+tnoremap <silent> <m-m> <c-w>:tab term<cr>
 
 function! Tab_MoveLeft()
 	let l:tabnr = tabpagenr() - 2
@@ -25,8 +28,10 @@ function! Tab_MoveRight()
 		exec 'tabmove '.l:tabnr
 	endif
 endfunc
-noremap <silent><m-,> :call Tab_MoveLeft()<cr>
-noremap <silent><m-.> :call Tab_MoveRight()<cr>
+nnoremap <silent><m-,> :call Tab_MoveLeft()<cr>
+nnoremap <silent><m-.> :call Tab_MoveRight()<cr>
+tnoremap <silent><m-,> <c-w>:call Tab_MoveLeft()<cr>
+tnoremap <silent><m-.> <c-w>:call Tab_MoveRight()<cr>
 
 
 """ Splits
