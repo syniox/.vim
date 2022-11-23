@@ -41,7 +41,7 @@ en
 
 call plug#begin()
     " General
-    Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'preservim/nerdtree' ", { 'on':  'NERDTreeToggle' }
 
     Plug 'jistr/vim-nerdtree-tabs'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -60,16 +60,20 @@ call plug#begin()
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
 
-"" nerdtree
+"" NERDTree
 let NERDTreeWinSize = 24 
-autocmd VimEnter * NERDTree | wincmd p
 " nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F2> <Plug>NERDTreeToggle
-" nmap <F2> <Plug>NERDTreeToggle
 " Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" autocmd BufEnter * NERDTreeMirror
-" autocmd BufWinEnter * :NERDTreeMirror<CR>
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+"" NERDTreeTabs
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_new_tab=1
+" let g:nerdtree_tabs_meaningful_tab_names=1
+let g:nerdtree_tabs_autoclose=1
+let g:nerdtree_tabs_synchronize_view=1
+nnoremap <F2> :NERDTreeTabsToggle<CR>
+" nnoremap <F2> <Plug>NERDTreeTabsToggle " doesn't work right now
 
 "" markdown-preview.nvim
 nnoremap <C-p> <Plug>MarkdownPreviewToggle

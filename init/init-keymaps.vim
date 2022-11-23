@@ -11,6 +11,8 @@ nnoremap <silent><m-4> :tabn 4<cr>
 " 创建和删除Tab
 nnoremap <silent> <leader>tc :tabnew<cr>
 nnoremap <silent> <leader>tq :tabclose<cr>
+nnoremap <silent> <m-n> :tabnew<cr>
+nnoremap <silent> <m-q> :tabclose<cr>
 
 """ Splits
 " 快速切换窗口
