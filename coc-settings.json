@@ -1,0 +1,5 @@
+// vim: filetype=jsonc
+
+{
+    "suggest.noselect": "true"
+}

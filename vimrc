@@ -24,9 +24,10 @@ LoadScript init/init-plugins.vim
 """ Movearound
 
 nnoremap <CR> :w<CR>
-imap {<CR> {<CR>}<esc>ko
+inoremap {<CR> {<CR>}<esc>ko
 nnoremap j gj
 nnoremap k gk
+
 
 """ Compile
 
@@ -39,4 +40,3 @@ nnoremap k gk
 if has('windows') && !empty(glob("~/.vim"))
 	map "+y :w !clip.exe<CR><CR>
 en
-

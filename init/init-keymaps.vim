@@ -57,9 +57,8 @@ tnoremap <silent><m-l> <c-w>:wincmd l<cr>
 """ Compile and run
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
-nnoremap <F7> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <F7> :call asyncrun#quickfix_toggle(8)<cr>
 " nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
-
 
 
 function Debug()
