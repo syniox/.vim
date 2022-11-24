@@ -46,3 +46,19 @@ function! Terminal_MetaMode(mode)
 endfunc
 
 call Terminal_MetaMode(0)
+
+" 文件类型微调 便于clangd识别
+"
+augroup InitFileTypesGroup
+    " 清除同组的历史 autocommand
+    au!
+	" C/C++ 文件使用 // 作为注释
+	au FileType c,cpp setlocal commentstring=//\ %s
+    " 强制纠正某些扩展名的 filetype
+    au BufNewFile,BufRead *.h setlocal filetype=cpp
+	au BufNewFile,BufRead *.as setlocal filetype=actionscript
+	au BufNewFile,BufRead *.pro setlocal filetype=prolog
+	au BufNewFile,BufRead *.es setlocal filetype=erlang
+	au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
+	au BufNewFile,BufRead *.vl setlocal filetype=verilog"
+augroup END

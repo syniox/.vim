@@ -58,8 +58,6 @@ tnoremap <silent><m-l> <c-w>:wincmd l<cr>
 let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 nnoremap <F7> :call asyncrun#quickfix_toggle(8)<cr>
-" nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
-
 
 function Debug()
     w
@@ -79,7 +77,14 @@ function Dbuild()
         exec "AsyncRun -cwd=<root> make"
     en
 endfunction
+function Generate()
+    w
+    if &filetype ==# "cpp"
+        exec "AsyncRun -cwd=<root> make clean;bear -- make"
+    en
+endfunc
 
 nnoremap <F10> :call Dbuild()<CR>
 nnoremap <F9> :call Debug()<CR>
+nnoremap <F12> :call Generate()<CR>
 " nnoremap <F8> :w<CR> :!g++ % -o %< -lm -Wall -Wextra -std=c++14 -O2<CR>

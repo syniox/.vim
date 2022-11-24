@@ -9,7 +9,7 @@ set wmnu wig=*.swp
 set mouse=a
 filetype indent on
 
-set updatetime=200 " 减少重渲染延迟
+set updatetime=100 " 减少重渲染延迟
 set lazyredraw
 
 " 取得本文件所在的目录

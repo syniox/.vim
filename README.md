@@ -9,5 +9,5 @@ Used plugins (need to download manually):
 ### Post-Install
 
 ```
-:CocInstall coc-snippets
+:CocInstall coc-snippets coc-marketplace
 ```
