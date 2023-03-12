@@ -65,6 +65,7 @@ if PlugLoaded('coc.nvim')
     nnoremap <silent><F2> :CocCommand explorer
                 \ --toggle --width 28 --preset simplify
                 \ --sources buffer-,file+<CR>
+    autocmd BufEnter * if (&ft == 'coc-explorer' && winnr("$") == 1) | q | endif
 
     " Use tab for trigger completion with characters ahead and navigate.
     inoremap <silent><expr> <TAB>
