@@ -1,7 +1,7 @@
 """ Plugins
 
 func! PlugLoaded(name)
-    return !empty(filter(split(execute(':scriptname'), "\n"), 'v:val =~? "tex"'))
+    return !empty(filter(split(&rtp, ','), 'v:val =~? a:name'))
 endfunc
 
 call plug#begin()
@@ -53,6 +53,19 @@ endif
 
 "" coc.nvim
 if PlugLoaded('coc.nvim')
+    " Download extensions
+    let g:coc_global_extensions = ['coc-explorer', 'coc-lists', 'coc-snippets']
+
+    "" coc explorer
+    let g:coc_explorer_global_presets = {
+    \   'simplify': {
+    \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+    \   },
+    \ }
+    nnoremap <silent><F2> :CocCommand explorer
+                \ --toggle --width 28 --preset simplify
+                \ --sources buffer-,file+<CR>
+
     " Use tab for trigger completion with characters ahead and navigate.
     inoremap <silent><expr> <TAB>
                 \ coc#pum#visible() ? coc#pum#next(1) :
