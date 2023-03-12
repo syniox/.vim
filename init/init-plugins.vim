@@ -2,22 +2,15 @@
 
 call plug#begin()
     " General
-    Plug 'preservim/nerdtree' ", { 'on':  'NERDTreeToggle' }
-    Plug 'jistr/vim-nerdtree-tabs'
+    " Plug 'preservim/nerdtree' ", { 'on':  'NERDTreeToggle' }
+    " Plug 'jistr/vim-nerdtree-tabs'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-    " Fuzzy Search
-    Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    " Plug 'junegunn/fzf.vim'
 
     " Complete
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Plug 'SirVer/ultisnips'
     " Plug 'honza/vim-snippets'
-    " Appearance
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
+
     " Compile
     Plug 'skywind3000/asyncrun.vim'
 
@@ -136,26 +129,3 @@ if has_key(plugs,'coc.nvim')
     " Resume latest coc list.
     nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 endif
-
-
-"" LeaderF
-"
-if has_key(plugs,'LeaderF')
-    " let g:Lf_WindowPosition = 'popup'
-    let g:Lf_ShortcutF = '<leader>ff'
-    let g:Lf_WindowHeight = 0.30
-    let g:Lf_WorkingDirectoryMode = 'Ac'
-    " LeaderF gtags extension
-    let g:Lf_GtagsAutoGenerate = 1
-    let g:Lf_RootMarkers = ['.git','.hg','.svn','.root']
-    let g:Lf_Gtagslabel = 'native-pygments'
-    noremap <leader>ft :<C-U><C-R>=printf("Leaderf gtags")<CR><CR>
-    noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -r %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -d %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap <leader>fg :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -s")<CR><CR>
-    noremap <leader>fs :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -s %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview --recall %s", "")<CR><CR>
-    noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-    noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-endif
-
