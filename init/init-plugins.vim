@@ -1,5 +1,9 @@
 """ Plugins
 
+func! PlugLoaded(name)
+    return !empty(filter(split(execute(':scriptname'), "\n"), 'v:val =~? "tex"'))
+endfunc
+
 call plug#begin()
     " General
     " Plug 'preservim/nerdtree' ", { 'on':  'NERDTreeToggle' }
@@ -20,7 +24,7 @@ call plug#end()
 
 
 "" NERDTree
-if has_key(plugs,'nerdtree')
+if PlugLoaded('nerdtree')
     let NERDTreeWinSize = 24
     let NERDTreeRespectWildIgnore = 1
 endif
@@ -30,7 +34,7 @@ endif
 
 
 "" NERDTreeTabs
-if has_key(plugs,'vim-nerdtree-tabs')
+if PlugLoaded('vim-nerdtree-tabs')
     let g:nerdtree_tabs_open_on_console_startup = 1
     let g:nerdtree_tabs_open_on_new_tab=1
     " let g:nerdtree_tabs_meaningful_tab_names=1
@@ -42,13 +46,13 @@ endif
 
 
 "" markdown-preview.nvim
-if has_key(plugs,'markdown-preview.nvim')
+if PlugLoaded('markdown-preview.nvim')
     nnoremap <C-p> <Plug>MarkdownPreviewToggle
 endif
 
 
 "" coc.nvim
-if has_key(plugs,'coc.nvim')
+if PlugLoaded('coc.nvim')
     " Use tab for trigger completion with characters ahead and navigate.
     inoremap <silent><expr> <TAB>
                 \ coc#pum#visible() ? coc#pum#next(1) :
