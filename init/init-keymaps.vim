@@ -68,23 +68,24 @@ function Debug()
         exec "!rustc % -o %<"
     en
 endfunction
-function Dbuild()
-    w
-    if &filetype ==# "rust"
-        exec "!cargo build"
-    en
-    if &filetype ==# "cpp"
-        exec "AsyncRun -cwd=<root> make"
-    en
-endfunction
-function Generate()
-    w
-    if &filetype ==# "cpp"
-        exec "AsyncRun -cwd=<root> make clean;bear -- make"
-    en
-endfunc
-
-nnoremap <F10> :call Dbuild()<CR>
+" function Dbuild()
+"     w
+"     if &filetype ==# "rust"
+"         exec "!cargo build"
+"     en
+"     if &filetype ==# "cpp"
+"         exec "AsyncRun -cwd=<root> make"
+"     en
+" endfunction
+" function Generate()
+"     w
+"     if &filetype ==# "cpp"
+"         exec "AsyncRun -cwd=<root> make clean;bear -- make"
+"     en
+" endfunc
+" 
 nnoremap <F9> :call Debug()<CR>
-nnoremap <F12> :call Generate()<CR>
+" nnoremap <F10> :call Dbuild()<CR>
+" nnoremap <F9> :call Debug()<CR>
+" nnoremap <F12> :call Generate()<CR>
 " nnoremap <F8> :w<CR> :!g++ % -o %< -lm -Wall -Wextra -std=c++14 -O2<CR>

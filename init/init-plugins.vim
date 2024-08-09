@@ -2,12 +2,12 @@
 
 call plug#begin()
     " General
-    Plug 'preservim/nerdtree' ", { 'on':  'NERDTreeToggle' }
-    Plug 'jistr/vim-nerdtree-tabs'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    " Plug 'preservim/nerdtree' ", { 'on':  'NERDTreeToggle' }
+    " Plug 'jistr/vim-nerdtree-tabs'
+    " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
     " Fuzzy Search
-    Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+    " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
     " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     " Plug 'junegunn/fzf.vim'
 
@@ -19,7 +19,7 @@ call plug#begin()
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'
     " Compile
-    Plug 'skywind3000/asyncrun.vim'
+    " Plug 'skywind3000/asyncrun.vim'
 
     " Initialize plugin system
     " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -27,36 +27,47 @@ call plug#end()
 
 
 "" NERDTree
-if has_key(plugs,'nerdtree')
-    let NERDTreeWinSize = 24
-    let NERDTreeRespectWildIgnore = 1
-endif
+" if has_key(plugs,'nerdtree')
+"     let NERDTreeWinSize = 24
+"     let NERDTreeRespectWildIgnore = 1
+" endif
 " nnoremap <F2> :NERDTreeToggle<CR>
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 " autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 
 "" NERDTreeTabs
-if has_key(plugs,'vim-nerdtree-tabs')
-    let g:nerdtree_tabs_open_on_console_startup = 1
-    let g:nerdtree_tabs_open_on_new_tab=1
-    " let g:nerdtree_tabs_meaningful_tab_names=1
-    let g:nerdtree_tabs_autoclose=1
-    let g:nerdtree_tabs_synchronize_view=1
-    nnoremap <F2> :NERDTreeTabsToggle<CR>
-    " nnoremap <F2> <Plug>NERDTreeTabsToggle " doesn't work right now
-endif
+" if has_key(plugs,'vim-nerdtree-tabs')
+"     let g:nerdtree_tabs_open_on_console_startup = 1
+"     let g:nerdtree_tabs_open_on_new_tab=1
+"     " let g:nerdtree_tabs_meaningful_tab_names=1
+"     let g:nerdtree_tabs_autoclose=1
+"     let g:nerdtree_tabs_synchronize_view=1
+"     nnoremap <F2> :NERDTreeTabsToggle<CR>
+"     nnoremap <F2> <Plug>NERDTreeTabsToggle " doesn't work right now
+" endif
 
 
 "" markdown-preview.nvim
-if has_key(plugs,'markdown-preview.nvim')
-    nnoremap <C-p> <Plug>MarkdownPreviewToggle
-endif
+" if has_key(plugs,'markdown-preview.nvim')
+"     nnoremap <C-p> <Plug>MarkdownPreviewToggle
+" endif
 
 
 "" coc.nvim
 if has_key(plugs,'coc.nvim')
     " Use tab for trigger completion with characters ahead and navigate.
+    let g:coc_global_extensions = ['coc-explorer']
+
+    let g:coc_explorer_global_presets = {
+    \     'simplify': {
+    \         'file-child-template': '[selection | clip | 1] [icon | 1] [filename omitCenter 1]',
+    \         'width': 26,
+    \     }
+    \ }
+
+    nnoremap <F2> <Cmd>CocCommand explorer --preset simplify<CR>
+
     inoremap <silent><expr> <TAB>
                 \ coc#pum#visible() ? coc#pum#next(1) :
                 \ CheckBackspace() ? "\<Tab>" :
@@ -140,22 +151,22 @@ endif
 
 "" LeaderF
 "
-if has_key(plugs,'LeaderF')
-    " let g:Lf_WindowPosition = 'popup'
-    let g:Lf_ShortcutF = '<leader>ff'
-    let g:Lf_WindowHeight = 0.30
-    let g:Lf_WorkingDirectoryMode = 'Ac'
-    " LeaderF gtags extension
-    let g:Lf_GtagsAutoGenerate = 1
-    let g:Lf_RootMarkers = ['.git','.hg','.svn','.root']
-    let g:Lf_Gtagslabel = 'native-pygments'
-    noremap <leader>ft :<C-U><C-R>=printf("Leaderf gtags")<CR><CR>
-    noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -r %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -d %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap <leader>fg :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -s")<CR><CR>
-    noremap <leader>fs :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -s %s --auto-jump", expand("<cword>"))<CR><CR>
-    noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview --recall %s", "")<CR><CR>
-    noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-    noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-endif
+" if has_key(plugs,'LeaderF')
+"     " let g:Lf_WindowPosition = 'popup'
+"     let g:Lf_ShortcutF = '<leader>ff'
+"     let g:Lf_WindowHeight = 0.30
+"     let g:Lf_WorkingDirectoryMode = 'Ac'
+"     " LeaderF gtags extension
+"     let g:Lf_GtagsAutoGenerate = 1
+"     let g:Lf_RootMarkers = ['.git','.hg','.svn','.root']
+"     let g:Lf_Gtagslabel = 'native-pygments'
+"     noremap <leader>ft :<C-U><C-R>=printf("Leaderf gtags")<CR><CR>
+"     noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -r %s --auto-jump", expand("<cword>"))<CR><CR>
+"     noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -d %s --auto-jump", expand("<cword>"))<CR><CR>
+"     noremap <leader>fg :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -s")<CR><CR>
+"     noremap <leader>fs :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview -s %s --auto-jump", expand("<cword>"))<CR><CR>
+"     noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --result ctags-mod --auto-preview --recall %s", "")<CR><CR>
+"     noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+"     noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+" endif
 

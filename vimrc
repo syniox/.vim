@@ -1,7 +1,6 @@
 """ General
 
 syntax on
-color slate
 
 set nu sc sw=4 ts=4 bs=start,eol,indent
 set et sta " et: expandtab 空格代替缩进 sta: smarttab 智能退格
@@ -27,16 +26,3 @@ nnoremap <CR> :w<CR>
 inoremap {<CR> {<CR>}<esc>ko
 nnoremap j gj
 nnoremap k gk
-
-
-""" Compile
-
-" run eval.vim " 载入函数
-" 
-" nnoremap <F10> :call Dbuild()<CR>
-" nnoremap <F9> :call Debug()<CR>
-" nnoremap <F8> :w<CR> :!g++ % -o %< -lm -Wall -Wextra -std=c++14 -O2<CR>
-
-if has('windows') && !empty(glob("~/.vim"))
-	map "+y :w !clip.exe<CR><CR>
-en
